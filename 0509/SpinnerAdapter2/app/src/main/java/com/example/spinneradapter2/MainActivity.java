@@ -17,5 +17,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        txv = (TextView) findViewById(R.id.order);
+        temp = (Spinner) findViewById(R.id.temp);
+        drinks = (Spinner) findViewById(R.id.drink);
     }
 }
