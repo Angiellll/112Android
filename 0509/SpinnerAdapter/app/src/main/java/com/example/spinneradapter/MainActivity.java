@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         spCourses = (Spinner) findViewById(R.id.spinner);
         spDesserts= (Spinner) findViewById(R.id.spinner2);
 
-        ArrayAdapter<String> adpCourses = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, courses);
+        ArrayAdapter<String> adpCourses = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, courses);
         ArrayAdapter<String> adpDesserts = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, desserts);
 
         spCourses.setAdapter(adpCourses);
@@ -38,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
                 String dessert = spDesserts.getSelectedItem().toString();
                 TextView output = (TextView) findViewById(R.id.lblOutput);
                 output.setText("主餐: " + course + "\n甜點: " +dessert);
+
+            }
+        });
+
+        Button btnModify = (Button) findViewById(R.id.btnModify);
+        btnModify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                desserts[4] = "草莓蛋糕";
+                adpDesserts.notifyDataSetChanged();
             }
         });
     }
