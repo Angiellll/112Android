@@ -3,6 +3,8 @@ package com.example.explicitintentdemo1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class FActivity extends AppCompatActivity {
@@ -13,6 +15,15 @@ public class FActivity extends AppCompatActivity {
         setContentView(R.layout.activity_factivity);
 
         converTempture();
+
+        Button btnReturn = (Button) findViewById(R.id.btnReturn);
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+
+            }
+        });
     }
 
     private void converTempture(){
