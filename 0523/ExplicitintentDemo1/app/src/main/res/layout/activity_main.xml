@@ -39,4 +39,15 @@
         android:text="轉換"
         app:layout_constraintStart_toEndOf="@+id/txtC"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:hint="填入場所"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="176dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

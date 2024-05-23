@@ -29,12 +29,14 @@ public class FActivity extends AppCompatActivity {
     private void converTempture(){
         int c;
         double f = 0.0;
+        String place = "";
         Bundle bundle = this.getIntent().getExtras();
         if(bundle != null){
-            c = Integer.parseInt(bundle.getString("TEMPC"));
+            c = bundle.getInt("TEMPC",0);
             f = (9.0 * c) / 5.0+ 32.0;
+            place = bundle.getString("PLACE","");
             TextView output = (TextView) findViewById(R.id.lblOutput);
-            output.setText("華氏溫度：" + Double.toString(f));
+            output.setText(place + "\n華氏溫度：" + Double.toString(f));
        }
     }
 }
