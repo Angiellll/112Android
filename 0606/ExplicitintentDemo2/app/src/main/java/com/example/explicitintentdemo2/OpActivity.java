@@ -9,13 +9,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 
-public class OPActivity extends AppCompatActivity {
+public class OpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_op);
         CheckBox chkDivide = (CheckBox) findViewById(R.id.chkDivide);
+        //chkDivide.setEnabled(false);
 
         Button button2 = (Button) findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
@@ -25,8 +26,9 @@ public class OPActivity extends AppCompatActivity {
                 double result = 0.0;
                 RadioButton rdbAdd, rdbSubtract, rdbMultiply, rdbDivide;
                 CheckBox chkDivide;
+
                 // 取得傳遞的資料
-                Bundle bundle = OPActivity.this.getIntent().getExtras();
+                Bundle bundle = OpActivity.this.getIntent().getExtras();
                 if (bundle == null) return;
                 // 取得運算元
                 opd1 = Integer.parseInt(bundle.getString("OPERAND01"));
@@ -34,21 +36,25 @@ public class OPActivity extends AppCompatActivity {
                 // 取得選取的運算子
                 rdbAdd = (RadioButton) findViewById(R.id.rdbAdd);
                 if (rdbAdd.isChecked()) {
+                    //chkDivide.setEnabled(false);
                     result = opd1 + opd2; // 加
                 }
                 rdbSubtract = (RadioButton) findViewById(R.id.rdbSubtract);
                 if (rdbSubtract.isChecked()) {
-                    result = opd1 - opd2; // 減
+                    //chkDivide.setEnabled(false);
+                    result = opd1 - opd2;  // 減
                 }
                 rdbMultiply = (RadioButton) findViewById(R.id.rdbMultiply);
                 if (rdbMultiply.isChecked()) {
-                    result = opd1 * opd2; // 乘
+                    //chkDivide.setEnabled(false);
+                    result = opd1 * opd2;  // 乘
                 }
                 rdbDivide = (RadioButton) findViewById(R.id.rdbDivide);
                 chkDivide = (CheckBox) findViewById(R.id.chkDivide);
                 if (rdbDivide.isChecked()) {
+                    //chkDivide.setEnabled(true);
                     if (chkDivide.isChecked())
-                        result = opd1 / opd2; // 整數除法
+                        result = opd1 / opd2;  // 整數除法
                     else
                         result = opd1 / (double) opd2;
                 }
@@ -56,7 +62,7 @@ public class OPActivity extends AppCompatActivity {
                 // 建立傳回值
                 Bundle rbundle = new Bundle();
                 rbundle.putDouble("RESULT", result);
-                rIntent.putExtras(rbundle); // 加上資料
+                rIntent.putExtras(rbundle);    // 加上資料
                 setResult(RESULT_OK, rIntent); // 設定傳回
                 finish(); // 結束活動
             }
